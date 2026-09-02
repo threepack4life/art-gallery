@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея картин — Книга</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Прелоадер -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="book-icon">📖</div>
+            <p>Открываем книгу...</p>
+        </div>
+    </div>
+
+    <!-- Основной контейнер книги -->
+    <main id="book-container" class="hidden">
+        <div class="book-wrapper">
+            <!-- Кнопки навигации -->
+            <button id="prev-page" class="nav-btn prev-btn" aria-label="Предыдущая страница">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+
+            <!-- Книга -->
+            <div id="book" class="book">
+                <div id="pages-container" class="pages-container">
+                    <!-- Страницы генерируются JavaScript -->
+                </div>
+            </div>
+
+            <button id="next-page" class="nav-btn next-btn" aria-label="Следующая страница">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Индикатор страниц -->
+        <div class="page-indicator">
+            <span id="current-page">1</span> / <span id="total-pages">1</span>
+        </div>
+    </main>
+
+    <!-- Lightbox модальное окно -->
+    <div id="lightbox" class="lightbox hidden">
+        <div class="lightbox-overlay"></div>
+        <div class="lightbox-content">
+            <button id="close-lightbox" class="close-btn" aria-label="Закрыть">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            <img id="lightbox-image" src="" alt="Просмотр картины">
+        </div>
+    </div>
+
+    <!-- Скрытое модальное окно добавления картин -->
+    <div id="add-painting-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button id="close-modal" class="close-btn" aria-label="Закрыть">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            
+            <h2>Добавить картину</h2>
+            <form id="add-painting-form">
+                <div class="form-group">
+                    <label for="title">Название:</label>
+                    <input type="text" id="title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="image">Имя файла картинки:</label>
+                    <input type="text" id="image" placeholder="например: picture.jpg" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Дата:</label>
+                    <input type="text" id="date" placeholder="например: 2024">
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Описание:</label>
+                    <textarea id="description" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="materials">Материалы:</label>
+                    <input type="text" id="materials" placeholder="например: холст, масло">
+                </div>
+                
+                <div class="form-group">
+                    <label for="price">Цена (оставьте пустым, если нет):</label>
+                    <input type="text" id="price" placeholder="например: 5000 ₽">
+                </div>
+                
+                <button type="submit" class="submit-btn">Добавить и скачать</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Подключение скриптов -->
+    <script src="paintings.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
